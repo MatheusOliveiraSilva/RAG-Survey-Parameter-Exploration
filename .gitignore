@@ -6,3 +6,9 @@
 .idea/
 
 .env
+
+rag/chunking/__pycache__/
+
+rag/chunking/chunking_strategies/__pycache__/
+
+documents/
