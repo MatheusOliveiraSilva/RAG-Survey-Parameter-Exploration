@@ -18,7 +18,7 @@ class ChunkingConfig:
 
     def get_chunker(self):
 
-        if self.chunking_strategy == 'fixed_size_chunking':
+        if self.chunking_strategy == 'fixed-size-chunking':
             return FixedSizeChunking(
                 chunk_size=self.chunk_size,
                 chunk_overlap=self.chunk_overlap

@@ -42,7 +42,7 @@ class PineconeUtils:
             spec=ServerlessSpec(cloud="aws", region="us-east-1"),
         )
         # Wait for the index to be created
-        while not self.pc_client.describe_index(index_name).status["ready"]:
+        while not self.pc_client.describe_index(self.index_name).status["ready"]:
             time.sleep(1)
 
         print(f"Index {index_name} created.")
