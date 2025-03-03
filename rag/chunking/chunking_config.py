@@ -1,13 +1,12 @@
 import os
-from rag.chunking import ChunkingConfig
 from rag.chunking.chunking_strategies.fixed_size_chunking import FixedSizeChunking
 
-class ChukingConfig:
+class ChunkingConfig:
     def __init__(self,
                  chunk_size: int,
                  chunk_overlap: int,
                  chunking_strategy: str,
-                 chunking_strategy_params: dict):
+                 chunking_strategy_params: dict = None):
         """
         Class used to manage with chunking configuration we are using in the project.
         """
@@ -30,4 +29,3 @@ class ChukingConfig:
                 chunk_size=self.chunk_size,
                 chunk_overlap=self.chunk_overlap
             ).get_chunker()
-        return
