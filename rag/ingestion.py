@@ -6,8 +6,8 @@ from pathlib import Path
 class Ingestion:
     def __init__(self,
                  chunk_size, chunk_overlap, chunking_strategy,
-                 directory, embedding_model_name,
-                 model_provider: str ='openai',
+                 directory, embedding_model_name, metric,
+                 model_provider: str = 'openai',
                  glob: str = '*.pdf'):
 
         self.chunk_size = chunk_size
@@ -19,7 +19,8 @@ class Ingestion:
         self.chunked_docs = self.chunker.split_documents(self.docs)
 
         self.pinecone_utils = PineconeUtils(
-            index_name=f'rag-{embedding_model_name}',
+            index_name=f'rag-{embedding_model_name}-{metric}',
+            metric=metric,
             embedding_model_name=embedding_model_name,
             embedding_provider=model_provider
         )
@@ -50,6 +51,7 @@ if __name__ == "__main__":
         chunk_size=512,
         chunk_overlap=50,
         chunking_strategy='fixed-size-chunking',
+        metric='dotproduct',
         directory=path,
         embedding_model_name='text-embedding-3-large'
     )

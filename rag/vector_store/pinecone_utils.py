@@ -10,13 +10,15 @@ class PineconeUtils:
     def __init__(self,
                  index_name: str,
                  embedding_model_name: str,
-                 embedding_provider: str
+                 embedding_provider: str,
+                 metric: str
                  ):
         """
         This class is responsible for preprocessing the documents
         and insert then into Pinecone.
         """
         self.index_name = index_name
+        self.metric = metric
         self.pc_client = Pinecone(api_key=os.environ["PINECONE_API_KEY"])
         self.embedding_config = EmbeddingConfig(embedding_model=embedding_model_name, provider=embedding_provider)
         self.embedding_model = self.embedding_config.get_embedding_model()
@@ -38,14 +40,14 @@ class PineconeUtils:
         self.pc_client.create_index(
             name=self.index_name,
             dimension=self.setup_dimension(self.embedding_config.embedding_model_name),
-            metric="cosine",
+            metric=self.metric,
             spec=ServerlessSpec(cloud="aws", region="us-east-1"),
         )
         # Wait for the index to be created
         while not self.pc_client.describe_index(self.index_name).status["ready"]:
             time.sleep(1)
 
-        print(f"Index {index_name} created.")
+        print(f"Index {self.index_name} created.")
 
     def index_exists(self, index_name: str) -> bool:
         """

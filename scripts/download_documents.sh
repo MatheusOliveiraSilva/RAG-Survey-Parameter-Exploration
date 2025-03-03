@@ -1,4 +1,4 @@
-#!/bin/bash
+l#!/bin/bash
 # download_documents.sh: Baixa o arquivo ZIP do Dropbox e extrai seu conteúdo.
 
 ZIP_URL="https://www.dropbox.com/scl/fo/567bfz020h4j6m88t6cvi/AKOl4CYf5hC_P4IHoPSeMDk?rlkey=qykon4ze1j37e5llx5n4xbozp&st=msg3vf35&dl=1"
