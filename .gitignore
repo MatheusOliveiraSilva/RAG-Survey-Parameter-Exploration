@@ -12,3 +12,7 @@ rag/chunking/__pycache__/
 rag/chunking/chunking_strategies/__pycache__/
 
 documents/
+
+rag/embedding/__pycache__/
+
+rag/vector_store/__pycache__/
