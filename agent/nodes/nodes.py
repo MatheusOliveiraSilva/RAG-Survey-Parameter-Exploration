@@ -41,7 +41,8 @@ class SimpleRAG:
 
         sys_msg = SystemMessage(
             content=SIMPLE_RAG_PROMPT.format(
-                relevant_documents=state["context"]
+                relevant_documents=state["context"],
+                message=state["messages"][-1].content
             )
         )
 
