@@ -36,7 +36,7 @@ class SimpleRAG:
         llm = self.model_config.get_llm_model(
             model_name="claude-3-7-sonnet-latest",
             max_tokens=2048,
-            # thinking={"type": "enabled", "budget_tokens": 1024}
+            thinking={"type": "enabled", "budget_tokens": 1024}
         )
 
         sys_msg = SystemMessage(
