@@ -7,8 +7,8 @@ from rag.retrieval.standart_retriever import StandardRetriever
 class SimpleRAG:
     def __init__(self,
                  llm_provider: str,
-                 llm_model_name: str,
-    ) -> None:
+                 llm_model_name: str
+                 ) -> None:
 
         self.model_config = ModelsConfig(provider=llm_provider)
         self.llm_model_name = llm_model_name

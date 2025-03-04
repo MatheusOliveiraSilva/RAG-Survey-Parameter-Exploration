@@ -25,3 +25,4 @@ unstructured[pdf]
 langchain_pinecone
 pinecone-text
 pinecone-notebooks
+streamlit
