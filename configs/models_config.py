@@ -15,7 +15,7 @@ class ModelsConfig:
 
     def get_llm_model(self, model_name, temperature=0.7, max_tokens=1000, **kwargs):
 
-        if kwargs['thinking']['type'] == 'enabled':
+        if 'thinking' in kwargs and kwargs['thinking']['type'] == 'enabled':
             temperature = 1
 
         if self.provider == 'openai':

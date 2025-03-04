@@ -5,6 +5,7 @@ from langgraph.checkpoint.memory import MemorySaver
 from agent.nodes.nodes import SimpleRAG
 from rag.retrieval.standart_retriever import StandardRetriever
 from agent.states.simple_rag_state import SimpleRagState
+import asyncio
 
 SimpleRAG = SimpleRAG(
     llm_provider='anthropic',
@@ -17,37 +18,29 @@ memory = MemorySaver()
 builder = StateGraph(SimpleRagState)
 
 # Add nodes
-builder.add_node("assistant", SimpleRAG.assistant)
 builder.add_node("retrieval", SimpleRAG.retrieval)
+builder.add_node("assistant", SimpleRAG.assistant)
 
 # Add edges
 builder.add_edge(START, "retrieval")
 builder.add_edge("retrieval", "assistant")
-builder.add_edge("assistant", END)
 
 # Compile graph
 graph = builder.compile(checkpointer=memory)
 
 if __name__ == "__main__":
     config = {"configurable": {"thread_id": "1"}}
-    messages = [HumanMessage(
-        content="What is HyDE?")
-    ]
-    result = graph.invoke({"messages": messages}, config)
 
-    for message in result["messages"]:
-        if isinstance(message, AIMessage):
-            print("=====AI Message=====")
-            for msg in message.content:
-                if msg["type"] == "thinking":
-                    print("---Model is thinking---")
-                    print(msg["thinking"])
+    def get_response(msg):
+        messages = [HumanMessage(
+            content=msg)
+        ]
 
-                if msg["type"] == "text":
-                    print("---Model answer---")
-                    print("Model's final response:\n", msg["text"])
+        for msg, metadata in graph.stream(
+                {"messages": messages},
+                stream_mode="messages", config=config
+        ):
+            if msg.content:
+                yield msg.content
 
-        if isinstance(message, HumanMessage):
-            print("=====Human Message=====")
-            print("User's input:\n", message.content)
-
+    print(get_response("What is HyDE?"))
