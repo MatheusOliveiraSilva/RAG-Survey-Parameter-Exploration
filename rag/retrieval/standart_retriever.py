@@ -8,7 +8,7 @@ class StandardRetriever:
                  metric: str,
                  embedding_provider: str,
                  top_k: int = 10
-                 ):
+                 ) -> None:
 
         self.top_k = top_k
         self.vector_store = PineconeUtils(

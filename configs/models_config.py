@@ -36,7 +36,6 @@ class ModelsConfig:
                 **kwargs
             )
 
-
 if __name__ == "__main__":
     llm_config = ModelsConfig('anthropic')
     llm = llm_config.get_llm_model(

@@ -16,3 +16,13 @@ documents/
 rag/embedding/__pycache__/
 
 rag/vector_store/__pycache__/
+
+agent/prompts/__pycache__/
+
+agent/states/__pycache__/
+
+rag/retrieval/__pycache__/
+
+rag/__pycache__/
+
+*.pyc

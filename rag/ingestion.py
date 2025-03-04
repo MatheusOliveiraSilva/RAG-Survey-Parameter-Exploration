@@ -36,7 +36,8 @@ class Ingestion:
 
         return chunking_config.get_chunker()
 
-    def load_documents(self, directory, glob):
+    @staticmethod
+    def load_documents(directory, glob):
         loader = DirectoryLoader(
             directory, glob=glob, show_progress=True
         )
