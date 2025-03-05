@@ -56,7 +56,8 @@ class PineconeUtils:
         existing_indexes = [index_info["name"] for index_info in self.pc_client.list_indexes()]
         return index_name in existing_indexes
 
-    def setup_dimension(self, model_name: str) -> int:
+    @staticmethod
+    def setup_dimension(model_name: str) -> int:
         """
         This function sets up the model dimensions for the model.
         """
