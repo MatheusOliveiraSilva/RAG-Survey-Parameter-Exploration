@@ -18,13 +18,13 @@ class ChunkingConfig:
 
     def get_chunker(self):
 
-        if self.chunking_strategy == 'fixed-size-chunking':
+        if self.chunking_strategy == 'fixed-size':
             return FixedSizeChunking(
                 chunk_size=self.chunk_size,
                 chunk_overlap=self.chunk_overlap
             ).get_chunker()
 
-        if self.chunking_strategy == 'content_aware_chunking':
+        if self.chunking_strategy == 'content-aware':
             return DynamicSizeChunking(
                 chunk_size=self.chunk_size,
                 chunk_overlap=self.chunk_overlap
