@@ -1,5 +1,6 @@
 import os
 from rag.chunking.chunking_strategies.fixed_size_chunking import FixedSizeChunking
+from rag.chunking.chunking_strategies.content_aware_chunking import DynamicSizeChunking
 
 class ChunkingConfig:
     def __init__(self,

@@ -1,7 +1,7 @@
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from typing import Literal
 
-class FixedSizeChunking:
+class DynamicSizeChunking:
     def __init__(self,
                  chunk_size: int = 512,
                  chunk_overlap: int = 80,
