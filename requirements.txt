@@ -11,6 +11,7 @@ ipykernel
 python-dotenv
 requests
 langchain
+anthropic
 langchain-anthropic
 langchain-openai
 langchain_experimental
