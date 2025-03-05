@@ -2,7 +2,6 @@ import streamlit as st
 import time
 from langchain_core.messages import HumanMessage, AIMessageChunk
 
-
 def stream_assistant_response(prompt, graph, memory_config) -> str:
     """
     Stream assistant answer displaying thoughts in real time and, when the final
@@ -56,6 +55,6 @@ def stream_assistant_response(prompt, graph, memory_config) -> str:
                                 thinking_expander_created = True
                             final_response += chunk["text"]
                             final_placeholder.markdown(final_response)
-        time.sleep(0.05)
+        time.sleep(0.1)
 
     return final_response
