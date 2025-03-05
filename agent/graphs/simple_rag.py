@@ -29,10 +29,10 @@ def get_response(msg):
                 if isinstance(item, AIMessageChunk) and item.content and "type" in item.content[0]:
                     if item.content[0]["type"] == "thinking":
                         if "thinking" in item.content[0]:
-                            thoughts += item.content[0]["thinking"]  # Armazena pensamentos
+                            thoughts += item.content[0]["thinking"]
                     elif item.content[0]["type"] == "text":
                         if "text" in item.content[0]:
-                            final_response += item.content[0]["text"]  # Armazena a resposta final
+                            final_response += item.content[0]["text"]
         time.sleep(0.05)
 
     return thoughts, final_response  # Retorna pensamentos como uma única string
