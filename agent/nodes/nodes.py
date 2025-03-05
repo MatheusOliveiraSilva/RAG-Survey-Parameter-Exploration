@@ -43,7 +43,8 @@ class SimpleRAG:
             content=SIMPLE_RAG_PROMPT.format(
                 relevant_documents=state["context"],
                 message=state["messages"][-1].content
-            )
+            ),
+            additional_kwargs={"cache-control": {"type": "ephemeral"}}
         )
 
         response = llm.invoke(
